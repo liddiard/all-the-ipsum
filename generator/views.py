@@ -1,7 +1,14 @@
 import json
+import urllib
+import urllib2
+
+from bs4 import BeautifulSoup
 
 from django.http import HttpResponse, Http404
 from django.views.generic.base import View, TemplateView
+
+
+API_URL = "http://en.wikiquote.org/w/api.php?"
 
 
 # views
@@ -46,4 +53,12 @@ class GenerateIpsumView(AjaxView):
     def get(self, request):
         page = request.GET['page']
         num_words = request.GET['words']
+        params = urllib.urlencode({
+            'format': 'json',
+            'action': 'parse',
+            'pageid': page
+        })
+        text = urllib2.urlopen(API_URL + params).read()
+        soup = BeautifulSoup(page)
+        print soup.find_all('dd')
         return self.success(page=page, words=num_words)
