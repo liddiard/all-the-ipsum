@@ -6,8 +6,9 @@
     app.controller('GeneratorController', function($scope, $http){
         var generator = this;
 
-        this.query = "";
-        this.results = [];
+        this.query = ""; // user-input query
+        this.words = 500; // default number of words
+        this.results = []; // search results from wiki api
 
         console.log('here');
         $scope.$watch(

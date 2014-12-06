@@ -5,8 +5,11 @@
 
 <h1>All the Ipsum</h1>
 <input ng-model="generator.query" type="text"/>
-{{generator.query}}
-{{generator.results}}
+<input ng-model="generator.words" type="number" min="0"/>
+
+<ul class="results">
+    <li ng-repeat="result in generator.results">{{result.title}}</li>
+</ul>
 
 {% endverbatim %}
 {% endblock %}
