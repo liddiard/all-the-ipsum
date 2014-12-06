@@ -19,12 +19,12 @@
     <link href="css/main.css" rel="stylesheet" type="text/css" />
 
     <!-- JavaScript -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+    <script src="{{ STATIC_URL }}js/app.js"></script>
 </head>
-<body>
+<body ng-app="ipsum">
     <header></header>
-    <main>{% block content %}{% endblock %}</main>
+    <main ng-controller="GeneratorController as generator">{% block content %}{% endblock %}</main>
     <footer></footer>
 </body>
 </html>

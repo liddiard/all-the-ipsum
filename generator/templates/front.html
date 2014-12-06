@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% verbatim %}
 
-<h1>Hello World</h1>
+<h1>All the Ipsum</h1>
+<input ng-model="generator.query" type="text"/>
+{{generator.query}}
+{{generator.results}}
 
+{% endverbatim %}
 {% endblock %}
