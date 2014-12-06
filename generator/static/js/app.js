@@ -6,11 +6,21 @@
     app.controller('GeneratorController', function($scope, $http){
         var generator = this;
 
+        // attributes //
+
         this.query = ""; // user-input query
         this.words = 500; // default number of words
         this.results = []; // search results from wiki api
 
-        console.log('here');
+
+        // methods //
+
+        this.generateIpsum = function(page, words) {
+            $http.get('/api/generate-ipsum/', {params: {page: page.pageid, words: generator.words}}).success(function(data){
+                console.log(data);
+            });
+        }
+
         $scope.$watch(
             function(){ return generator.query },
             function(){

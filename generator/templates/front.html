@@ -8,7 +8,7 @@
 <input ng-model="generator.words" type="number" min="0"/>
 
 <ul class="results">
-    <li ng-repeat="result in generator.results">{{result.title}}</li>
+    <li ng-click="generator.generateIpsum(result, generator.words)" ng-repeat="result in generator.results">{{result.title}}</li>
 </ul>
 
 {% endverbatim %}
