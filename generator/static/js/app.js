@@ -11,13 +11,14 @@
         this.query = ""; // user-input query
         this.words = 500; // default number of words
         this.results = []; // search results from wiki api
+        this.ipsum = [];
 
 
         // methods //
 
         this.generateIpsum = function(page, words) {
             $http.get('/api/generate-ipsum/', {params: {page: page.pageid, words: generator.words}}).success(function(data){
-                console.log(data);
+                generator.ipsum = data.lines;
             });
         }
 

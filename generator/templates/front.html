@@ -11,5 +11,7 @@
     <li ng-click="generator.generateIpsum(result, generator.words)" ng-repeat="result in generator.results">{{result.title}}</li>
 </ul>
 
+<p ng-repeat="line in generator.ipsum track by $index">{{line}}</p>
+
 {% endverbatim %}
 {% endblock %}

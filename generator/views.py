@@ -1,3 +1,4 @@
+import re
 import json
 import urllib
 import urllib2
@@ -58,7 +59,11 @@ class GenerateIpsumView(AjaxView):
             'action': 'parse',
             'pageid': page
         })
-        text = urllib2.urlopen(API_URL + params).read()
-        soup = BeautifulSoup(page)
-        print soup.find_all('dd')
-        return self.success(page=page, words=num_words)
+        page_text = urllib2.urlopen(API_URL + params).read()
+        soup = BeautifulSoup(page_text)
+        lines = []
+        for tag in soup.find_all('dd'):
+            text = tag.get_text()
+            cleaned = re.sub(r'(^.*: )|(\[.*\])', "", text)
+            lines.append(cleaned)
+        return self.success(page=page, words=num_words, lines=lines)
